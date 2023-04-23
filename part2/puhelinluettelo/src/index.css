@@ -1,0 +1,19 @@
+h2 {
+  color: rgb(59, 57, 57);
+}
+
+.add {
+  color: green
+}
+
+.del {
+  color: red
+}
+
+.update {
+  color: green
+}
+
+.error {
+  color: red
+}
