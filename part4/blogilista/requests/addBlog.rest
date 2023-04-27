@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Meikäläisen elämänkerta",
+  "author": "TJ",
+  "url": "valmisteilla",
+  "likes": 10000
+
+}
