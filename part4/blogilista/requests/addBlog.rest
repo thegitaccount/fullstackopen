@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlZlaWpvIiwiaWQiOiI2NDRlYjNhMWM5Mjk3ODliNzYwYWI1MWQiLCJpYXQiOjE2ODI4Nzk0MDQsImV4cCI6MTY4Mjg4MzAwNH0.V6ucvXWIZCnJYsYhvSQY5WVEVlafVtWiZTL2abkfJA4
 
 {
-  "title": "Meikäläisen elämänkerta",
-  "author": "TJ",
-  "url": "valmisteilla",
-  "likes": 10000
-
+  "title": "Type wars",
+  "author": "Robert C. Martin",
+  "url": "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
+  "likes": 2
 }
