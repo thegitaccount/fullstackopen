@@ -30,19 +30,22 @@ blogsRouter.post('/', async (request, response) => {
   const user = await User.findById(decodedToken.id)
   //console.log('New blog posted by:', user.username)
   //console.log(`Token of ${user.username}:`, token)
+  console.log(user)
+  console.log(user.id)
 
   const blog = new Blog({
     title: title,
     author: author,
     url: url,
     likes: likes || 0,
-    user: user._id
+    user: user.id
   })
   try {
     const savedBlog = await blog.save()
     user.blogs = user.blogs.concat(savedBlog._id)
     await user.save()
-    response.status(201).json(savedBlog)
+    const populatedBlog = await Blog.findById(savedBlog._id).populate('user', { username: 1, name: 1, id: 1 })
+    response.status(201).json(populatedBlog)
   } catch (error) {
     response.status(400).end()
   }
@@ -86,12 +89,13 @@ blogsRouter.delete('/:id', async (request, response, next) => {
 
 blogsRouter.put('/:id', async (request, response) => {
   const id = request.params.id
+  //console.log(id)
   const blog = await Blog.findByIdAndUpdate(
     id,
     { $inc: { likes: 1 } }, //lisätään 1 tykkäys huolimatta siitä mikä arvo saadaan requestin mukana
     { new: true }
   )
-  response.status(204).json(blog)
+  response.status(201).json(blog)
 })
 
 module.exports = blogsRouter

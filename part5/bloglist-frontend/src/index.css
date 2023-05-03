@@ -1,0 +1,31 @@
+.wrong {
+    color: red;
+    border: 2px solid red;
+    padding: 5px;
+    display: inline-block
+  }
+
+.add {
+  color: green;
+  border: 2px solid green;
+  padding: 5px;
+  display: inline-block
+}
+
+.remove {
+  color: green;
+  border: 2px solid green;
+  padding: 5px;
+  display: inline-block
+}
+
+label {
+    display: inline-block;
+    width: 50px;
+    text-align: left;
+  }
+  input[type="text"] {
+    width: 300px;
+ }
+
+ 
