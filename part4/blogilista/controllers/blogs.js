@@ -84,18 +84,12 @@ blogsRouter.delete('/:id', async (request, response, next) => {
   }
 })
 
-
-
-
 blogsRouter.put('/:id', async (request, response) => {
-  const id = request.params.id
-  //console.log(id)
-  const blog = await Blog.findByIdAndUpdate(
-    id,
-    { $inc: { likes: 1 } }, //lisätään 1 tykkäys huolimatta siitä mikä arvo saadaan requestin mukana
-    { new: true }
-  )
-  response.status(201).json(blog)
+  const { title, url, author, likes } = request.body
+
+  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id,  { title, url, author, likes }, { new: true })
+
+  response.json(updatedBlog)
 })
 
 module.exports = blogsRouter

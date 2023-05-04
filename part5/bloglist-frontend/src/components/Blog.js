@@ -49,7 +49,7 @@ const Blog = ({ blog, addLike, deleteBlog, user }) => {
             </button>
           </p>
           <p>{blog.user.name}</p>
-          {user.username === blog.user.username && (
+          {user && user.username === blog.user.username &&  (
             <button style={{ backgroundColor: 'lightblue', fontWeight: 'bold' }} onClick={handleDelete}>
             Remove
             </button>
