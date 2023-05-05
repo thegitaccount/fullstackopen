@@ -32,7 +32,7 @@ const Blog = ({ blog, addLike, deleteBlog, user }) => {
   }
 
   return (
-    <div style={blogStyle}>
+    <div className="blog" style={blogStyle}>
       <div>
         {blog.title} {blog.author}{' '}
         <button style={{ fontWeight: 'bold', float: 'right' }} onClick={toggleDetails}>
@@ -44,13 +44,13 @@ const Blog = ({ blog, addLike, deleteBlog, user }) => {
           <p>{blog.url}</p>
           <p>
             {blog.likes}
-            <button style={{ fontWeight: 'bold', float: 'right' }} onClick={handleLike}>
+            <button id='like-button' style={{ fontWeight: 'bold', float: 'right' }} onClick={handleLike}>
             Like
             </button>
           </p>
           <p>{blog.user.name}</p>
           {user && user.username === blog.user.username &&  (
-            <button style={{ backgroundColor: 'lightblue', fontWeight: 'bold' }} onClick={handleDelete}>
+            <button id='remove-button' style={{ backgroundColor: 'lightblue', fontWeight: 'bold' }} onClick={handleDelete}>
             Remove
             </button>
           )}

@@ -30,8 +30,8 @@ blogsRouter.post('/', async (request, response) => {
   const user = await User.findById(decodedToken.id)
   //console.log('New blog posted by:', user.username)
   //console.log(`Token of ${user.username}:`, token)
-  console.log(user)
-  console.log(user.id)
+  //console.log(user)
+  //console.log(user.id)
 
   const blog = new Blog({
     title: title,
@@ -85,11 +85,14 @@ blogsRouter.delete('/:id', async (request, response, next) => {
 })
 
 blogsRouter.put('/:id', async (request, response) => {
-  const { title, url, author, likes } = request.body
-
-  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id,  { title, url, author, likes }, { new: true })
-
-  response.json(updatedBlog)
+  const id = request.params.id
+  //console.log(id)
+  const blog = await Blog.findByIdAndUpdate(
+    id,
+    { $inc: { likes: 1 } }, //lisätään 1 tykkäys huolimatta siitä mikä arvo saadaan requestin mukana
+    { new: true }
+  )
+  response.status(201).json(blog)
 })
 
 module.exports = blogsRouter

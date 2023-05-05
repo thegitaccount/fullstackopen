@@ -22,10 +22,10 @@ const LoginForm = ({ handleLogin }) => {
         <div>
           <label style={{ width: '80px' }}>username:</label>
           <input
-            id="username"
-            type="text"
+            id='username'
+            type='text'
             value={username}
-            name="Username"
+            name='Username'
             onChange={({ target }) => setUsername(target.value)}
             style={{ width: '200px' }}
           />
@@ -33,15 +33,15 @@ const LoginForm = ({ handleLogin }) => {
         <div>
           <label style={{ width: '80px' }}>password:</label>
           <input
-            id="password"
-            type="password"
+            id='password'
+            type='password'
             value={password}
-            name="Password"
+            name='Password'
             onChange={({ target }) => setPassword(target.value)}
             style={{ width: '200px' }}
           />
         </div>
-        <button type="submit">
+        <button id="login-button" type='submit'>
           login
         </button>
       </form>
