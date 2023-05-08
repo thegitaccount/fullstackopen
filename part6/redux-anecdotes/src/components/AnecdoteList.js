@@ -1,8 +1,6 @@
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { voteAnecdote } from '../reducers/anecdoteReducer'
-import { shortNotification } from '../reducers/notificationReducer'
-
-
+import { voteAdd, initializeAnecdotes } from '../reducers/anecdoteReducer'
 
 const AnecdoteList = () => {
   const anecdotes = useSelector((state) =>
@@ -14,13 +12,13 @@ const AnecdoteList = () => {
   )
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(initializeAnecdotes())
+  }, [dispatch])
 
   const handleVote = (anecdote) => {
-    dispatch(voteAnecdote(anecdote))
+    dispatch(voteAdd(anecdote))
     //console.log(anecdote)
-    dispatch(shortNotification('You voted: \'' + anecdote.content + '\'', 5))
-
-
   }
 
   return anecdotes.map((anecdote) => (
